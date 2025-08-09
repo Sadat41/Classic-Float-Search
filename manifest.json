@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Restores the classic CSFloat search experience with sidebar input and autocomplete dropdown",
   "permissions": [
-    "activeTab"
+
   ],
   "content_scripts": [
     {
