@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Classic Float Search",
+  "version": "1.0.0",
+  "description": "Restores the classic CSFloat search experience with sidebar input and autocomplete dropdown",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://csfloat.com/search*",
+        "https://*.csfloat.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

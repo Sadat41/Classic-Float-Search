@@ -1,0 +1,17 @@
+/* Hide the large popup backdrop but allow autocomplete dropdown */
+.cdk-overlay-backdrop {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Hide the large spotlight overlay but allow autocomplete */
+app-spotlight-overlay {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Keep autocomplete dropdown visible */
+.mat-mdc-autocomplete-panel {
+    display: block !important;
+    visibility: visible !important;
+}
