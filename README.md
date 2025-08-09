@@ -190,9 +190,9 @@ The dropdown displays rich information:
 ## Technical Details
 
 ### Architecture
-```
+
 ![Architecture Diagram](https://github.com/Sadat41/Classic-Float-Search/blob/main/Architecture.png?raw=true)
-```
+
 
 ### Files Structure
 ```
