@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Classic Float Search",
+  "name": "CSFloat Classic Search - Get Rid of the New Search",
   "version": "1.0.0",
   "description": "Restores the classic CSFloat search experience with sidebar input and autocomplete dropdown",
   "permissions": [
