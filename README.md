@@ -1,12 +1,27 @@
+<div align="center">
+
+<img src="https://github.com/Sadat41/Classic-Float-Search/blob/main/icon128.png?raw=true" alt="Classic Float Search Logo" width="128" height="128">
+
 # Classic Float Search
 
-> **Restore the classic CSFloat search experience with sidebar input and native autocomplete suggestions**
+**Restore the classic CSFloat search experience with sidebar input and native autocomplete suggestions**
 
-## What This Extension Does
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/Sadat41/Classic-Float-Search)
+[![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen?style=for-the-badge)](https://github.com/Sadat41/Classic-Float-Search/releases)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![CSFloat](https://img.shields.io/badge/CSFloat-Compatible-orange?style=for-the-badge)](https://csfloat.com)
+
+[Download](#installation) • [Documentation](#how-to-use) • [Troubleshooting](#troubleshooting) • [FAQ](#frequently-asked-questions)
+
+</div>
+
+---
+
+## Overview
 
 CSFloat recently updated their search interface with a popup overlay that many users find disruptive. **Classic Float Search** brings back the familiar sidebar search experience you're used to, complete with the beautiful autocomplete dropdown that shows item suggestions with images and details.
 
-### Features
+### Key Features
 
 - **Classic Sidebar Search** - Type directly in the left sidebar search box
 - **Native Autocomplete** - Beautiful dropdown with item images and details  
@@ -21,39 +36,63 @@ CSFloat recently updated their search interface with a popup overlay that many u
 - The intrusive backdrop that covers the entire screen
 - All the disruption while keeping the functionality
 
-## Installation Guide
+---
 
-### Step 1: Download the Extension
+## Tech Stack
 
-1. **Download** this extension folder to your computer
-2. **Extract** if it's in a ZIP file
-3. **Remember** the folder location (you'll need it in Step 2)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Chrome Extension](https://img.shields.io/badge/Chrome-Extension_API-4285F4?style=flat&logo=googlechrome&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-Styling-1572B6?style=flat&logo=css3&logoColor=white)
+![Manifest V3](https://img.shields.io/badge/Manifest-V3-brightgreen?style=flat)
 
-### Step 2: Enable Developer Mode
+**Frontend:** Vanilla JavaScript ES6+, CSS3, Chrome Extension APIs  
+**Architecture:** Content Script + CSS Injection, DOM Manipulation  
+**Performance:** Throttled Events, Efficient DOM Observers, Passive Listeners
 
+---
+
+## Installation
+
+### Method 1: Quick Install (Recommended)
+
+1. **Download** the [latest release](https://github.com/Sadat41/Classic-Float-Search/archive/refs/heads/main.zip)
+2. **Extract** the ZIP file to a folder on your desktop
+3. **Open Chrome** and go to `chrome://extensions/`
+4. **Enable** "Developer mode" (toggle in top right)
+5. **Click** "Load unpacked" and select the extracted folder
+6. **Done!** Visit [csfloat.com/search](https://csfloat.com/search) to use
+
+### Method 2: Detailed Steps
+
+<details>
+<summary>Click to expand detailed installation guide</summary>
+
+#### Step 1: Download the Extension
+1. Go to the [GitHub repository](https://github.com/Sadat41/Classic-Float-Search)
+2. Click the green **"Code"** button → **"Download ZIP"**
+3. Extract the ZIP file to a memorable location
+
+#### Step 2: Enable Developer Mode
 1. Open **Google Chrome**
-2. Click the **three dots menu** (⋮) in the top right corner
-3. Go to **More tools** → **Extensions**
-4. **Alternative**: Type `chrome://extensions/` in the address bar
+2. Navigate to `chrome://extensions/` or:
+   - Click three dots menu (⋮) → **More tools** → **Extensions**
+3. Find **"Developer mode"** toggle in the top right corner
+4. Click to **turn it ON** (should turn blue/green)
 
-**In the Extensions page:**
-1. Look for **"Developer mode"** toggle in the **top right corner**
-2. **Click the toggle** to turn it ON (it should turn blue/green)
-3. You'll see new buttons appear: "Load unpacked", "Pack extension", "Update"
+#### Step 3: Load the Extension
+1. Click **"Load unpacked"** button (now visible)
+2. Navigate to your extracted folder
+3. Select the folder containing `manifest.json`
+4. Click **"Select Folder"**
 
-### Step 3: Load the Extension
+#### Step 4: Verify Installation
+- Look for **"Classic Float Search"** in your extensions list
+- Status should show **"Enabled"**
+- Visit CSFloat to see the orange border around search box
 
-1. Click the **"Load unpacked"** button (now visible after enabling Developer mode)
-2. **Navigate to** the extension folder you downloaded/extracted
-3. **Select the folder** containing the `manifest.json` file
-4. Click **"Select Folder"** (Windows) or **"Open"** (Mac)
+</details>
 
-### Step 4: Verify Installation
-
-You should now see **"Classic Float Search"** in your extensions list with:
-- **Status**: Enabled 
-- **ID**: A random string of letters
-- **Description**: "Restores the classic CSFloat search experience..."
+---
 
 ## How to Use
 
@@ -61,147 +100,210 @@ You should now see **"Classic Float Search"** in your extensions list with:
 
 1. **Navigate** to [csfloat.com/search](https://csfloat.com/search)
 2. **Look** for the search box in the left sidebar 
-3. **Notice** the orange border (this means the extension is working!)
+3. **Notice** the orange border (extension is active!)
 
-### Using the Search
+### Basic Usage
 
-#### Basic Search
-1. **Click** in the sidebar search box
-2. **Start typing** any item name (e.g., "karambit", "ak-47", "gloves")
-3. **Watch** the autocomplete dropdown appear below
-4. **Press Enter** to search or **click a suggestion** to select it
+| Action | Description |
+|--------|-------------|
+| **Type in sidebar** | Start typing any item name (e.g., "karambit", "ak-47") |
+| **View suggestions** | Autocomplete dropdown appears with images and details |
+| **Click suggestion** | Select any item from the dropdown |
+| **Press Enter** | Execute search with current text |
+| **Press Escape** | Close suggestions and continue typing |
 
-#### Understanding Suggestions
-The dropdown shows rich suggestions with:
-- **Item Images** - Actual skin previews
+### Understanding Suggestions
+
+The dropdown displays rich information:
+- **Item Images** - Actual skin previews from Steam
 - **Item Names** - Full names like "Karambit | Doppler"  
-- **Rarity Colors** - Consumer, Industrial, Mil-Spec, etc.
-- **Special Attributes** - StatTrak™, wear ranges, etc.
+- **Rarity Colors** - Consumer, Industrial, Mil-Spec, Restricted, Classified, Covert
+- **Special Attributes** - StatTrak™, wear ranges, collection info
 
-#### Navigation Tips
-- **Type freely** - The search updates as you type
-- **Use arrow keys** - Navigate through suggestions (if supported)
-- **Click anywhere** - Suggestions auto-hide when clicking outside
-- **Press Escape** - Close suggestions and continue typing
+---
 
 ## Troubleshooting
 
-### Extension Not Working?
+### Common Issues
 
-**Check if installed correctly:**
+<details>
+<summary>Extension not working?</summary>
+
+**Check installation:**
 1. Go to `chrome://extensions/`
 2. Find "Classic Float Search"
-3. Make sure the toggle is **ON** (blue/enabled)
+3. Ensure toggle is **ON** (blue/enabled)
 
-**Try refreshing CSFloat:**
-1. Go to any CSFloat page
-2. Press **Ctrl+F5** (Windows) or **Cmd+Shift+R** (Mac) to hard refresh
-3. The orange border should appear around the search box
+**Refresh CSFloat:**
+1. Press **Ctrl+F5** (Windows) or **Cmd+Shift+R** (Mac)
+2. Look for orange border around search box
+3. Try typing in the sidebar search
 
-### Search Box Still Disabled?
+</details>
 
-**Common solutions:**
-1. **Wait a moment** - The extension takes a few seconds to activate
-2. **Refresh the page** - Sometimes a simple refresh helps
-3. **Check console** - Press F12, look for any error messages
-4. **Restart browser** - Close and reopen Chrome completely
+<details>
+<summary>Search box still disabled?</summary>
 
-### Suggestions Not Appearing?
+**Solutions:**
+- **Wait 2-3 seconds** - Extension needs time to initialize
+- **Refresh page** - Sometimes a simple refresh works
+- **Check browser console** - Press F12, look for errors
+- **Restart Chrome** - Close browser completely and reopen
 
-**Possible fixes:**
-1. **Type more characters** - Try typing at least 2-3 characters
-2. **Check your spelling** - Make sure item names are spelled correctly
-3. **Wait briefly** - Suggestions may take a moment to load
-4. **Try common items** - Test with "karambit", "ak-47", or "awp"
+</details>
+
+<details>
+<summary>No autocomplete suggestions?</summary>
+
+**Fixes:**
+- **Type more characters** - Try at least 2-3 characters
+- **Check spelling** - Ensure item names are correct
+- **Test common items** - Try "karambit", "ak-47", "awp"
+- **Wait briefly** - Suggestions may load with slight delay
+
+</details>
+
+---
 
 ## Privacy & Security
 
 ### What This Extension Does
-- **Only runs on CSFloat** - Doesn't access any other websites
-- **No data collection** - Doesn't track or store your searches  
-- **No external servers** - Works entirely within your browser
-- **Open source code** - You can inspect all the code files
+- **CSFloat Only** - Runs exclusively on CSFloat domains
+- **No Data Collection** - Doesn't track or store searches
+- **Local Processing** - Everything happens in your browser
+- **Open Source** - All code is public and auditable
 
 ### Permissions Explained
-- **`activeTab`** - Only needed to interact with the current CSFloat tab
-- **No broad permissions** - Can't access your browsing history or other sites
+```json
+{
+  "permissions": ["activeTab"],
+  "host_permissions": ["https://csfloat.com/*", "https://*.csfloat.com/*"]
+}
+```
+
+- **`activeTab`** - Interact with current CSFloat tab only
+- **Host permissions** - Access CSFloat pages to modify search interface
+- **No broad permissions** - Cannot access other websites or browsing data
+
+---
 
 ## Technical Details
 
+### Architecture
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Content       │    │   CSFloat       │    │   Autocomplete  │
+│   Script        │───▶│   DOM           │───▶│   Dropdown      │
+│   (content.js)  │    │   Elements      │    │   (Native)      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
 ### Files Structure
 ```
-Classic Float Search/
+Classic-Float-Search/
 ├── manifest.json      # Extension configuration
 ├── content.js         # Main functionality script  
-├── styles.css         # Interface optimization styles
-└── README.md         # This documentation
+├── styles.css         # Interface optimization
+├── icon*.png          # Extension icons
+└── README.md          # Documentation
 ```
 
 ### Browser Compatibility
-- **Google Chrome** (recommended)
-- **Microsoft Edge** (Chromium-based)
-- **Brave Browser**
-- **Opera** (Chromium-based)
-- **Firefox** - Not supported (different extension system)
-- **Safari** - Not supported (different extension system)
+| Browser | Support | Notes |
+|---------|---------|-------|
+| **Chrome 88+** | Full | Recommended |
+| **Edge (Chromium)** | Full | Tested |
+| **Brave** | Full | Compatible |
+| **Opera** | Partial | May work |
+| **Firefox** | No | Different extension system |
+| **Safari** | No | Different extension system |
 
-### Version Requirements
-- **Chrome 88+** (for Manifest V3 support)
-- **Modern JavaScript** support required
+---
 
-## Sharing with Friends
+## Contributing
 
-### Easy Installation for Others
+### Development Setup
 
-**Method 1: Share the Folder**
-1. **Zip** your extension folder
-2. **Share** the ZIP file
-3. **Recipients** follow the installation guide above
+```bash
+# Clone the repository
+git clone https://github.com/Sadat41/Classic-Float-Search.git
 
-**Method 2: Step-by-Step for Non-Tech Users**
+# Navigate to project
+cd Classic-Float-Search
 
-Send them this simple instruction:
-> 1. Download the extension ZIP file I sent you
-> 2. Extract it to a folder on your desktop
-> 3. Open Chrome and go to Settings → Extensions  
-> 4. Turn ON "Developer mode" (top right toggle)
-> 5. Click "Load unpacked" and select the folder
-> 6. Go to csfloat.com/search and enjoy!
+# Load in Chrome for testing
+# Go to chrome://extensions/ → Developer mode → Load unpacked
+```
+
+### Making Changes
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+---
+
+## Frequently Asked Questions
+
+<details>
+<summary><strong>Q: Is this safe to use?</strong></summary>
+<br>
+<strong>A:</strong> Yes! The extension only runs on CSFloat, doesn't collect data, and all code is open source for review.
+</details>
+
+<details>
+<summary><strong>Q: Will this break when CSFloat updates?</strong></summary>
+<br>
+<strong>A:</strong> It might need updates if CSFloat significantly changes their interface. We'll monitor and update as needed.
+</details>
+
+<details>
+<summary><strong>Q: Can I publish this to Chrome Web Store?</strong></summary>
+<br>
+<strong>A:</strong> Publishing requires following Google's policies. The current version might need modifications for store approval.
+</details>
+
+<details>
+<summary><strong>Q: Can I use this with other CSFloat extensions?</strong></summary>
+<br>
+<strong>A:</strong> Generally yes, but some extensions might conflict. Try disabling others if you experience issues.
+</details>
+
+<details>
+<summary><strong>Q: How do I uninstall?</strong></summary>
+<br>
+<strong>A:</strong> Go to <code>chrome://extensions/</code>, find "Classic Float Search", and click "Remove".
+</details>
+
+---
 
 ## Changelog
 
-### Version 1.0.0
+### Version 1.0.0 (Latest)
 - Initial release
 - Classic sidebar search restoration
 - Native autocomplete dropdown
 - Performance optimizations
 - Visual confirmation indicator
 
-## Frequently Asked Questions
+---
 
-**Q: Is this safe to use?**  
-A: Yes! The extension only runs on CSFloat and doesn't collect any data.
+## License
 
-**Q: Will this break when CSFloat updates?**  
-A: It might need updates if CSFloat changes their interface significantly.
-
-**Q: Can I use this alongside other CSFloat extensions?**  
-A: Generally yes, but some extensions might conflict. Try disabling others if issues occur.
-
-**Q: Why do I need Developer Mode?**  
-A: This extension isn't published on the Chrome Web Store, so it requires manual installation.
-
-**Q: Does this work on mobile?**  
-A: No, this is only for desktop Chrome browsers.
-
-**Q: How do I uninstall it?**  
-A: Go to chrome://extensions/, find "Classic Float Search", and click "Remove".
-
-**Q: Can I modify the code?**  
-A: Yes! All source code is available and you can customize it as needed.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
+<div align="center">
+
 **Made with care for the CSFloat community**
 
-*Having issues? Double-check the installation steps or try refreshing the CSFloat page!*
+[Star this repo](https://github.com/Sadat41/Classic-Float-Search) • [Report Bug](https://github.com/Sadat41/Classic-Float-Search/issues) • [Request Feature](https://github.com/Sadat41/Classic-Float-Search/issues)
+
+---
+
+*Having issues? Check the [troubleshooting guide](#troubleshooting) or [open an issue](https://github.com/Sadat41/Classic-Float-Search/issues)!*
+
+</div>
