@@ -1,16 +1,20 @@
-/* Hide the large popup backdrop but allow autocomplete dropdown */
-.cdk-overlay-backdrop {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-/* Hide the large spotlight overlay but allow autocomplete */
+/* Hide the main spotlight overlay component */
 app-spotlight-overlay {
     display: none !important;
     visibility: hidden !important;
 }
 
-/* Keep autocomplete dropdown visible */
+/*
+  Hide the backdrop ONLY for the search overlay.
+  This :has() selector looks for a backdrop that is immediately followed by
+  the search component, ensuring we don't hide backdrops for other popups.
+*/
+.cdk-overlay-backdrop:has(+ * app-spotlight-overlay) {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Keep the autocomplete dropdown panel itself visible */
 .mat-mdc-autocomplete-panel {
     display: block !important;
     visibility: visible !important;

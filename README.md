@@ -261,11 +261,6 @@ cd Classic-Float-Search
 <strong>A:</strong> It might need updates if CSFloat significantly changes their interface. We'll monitor and update as needed.
 </details>
 
-<details>
-<summary><strong>Q: Can I publish this to Chrome Web Store?</strong></summary>
-<br>
-<strong>A:</strong> Publishing requires following Google's policies. The current version might need modifications for store approval.
-</details>
 
 <details>
 <summary><strong>Q: Can I use this with other CSFloat extensions?</strong></summary>
