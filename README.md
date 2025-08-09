@@ -17,6 +17,16 @@
 
 ---
 
+---
+
+## Previews
+
+<div align="center">
+  <img src="https://github.com/Sadat41/Classic-Float-Search/blob/main/previews/preview.gif?raw=true" alt="Classic Float Search Preview" />
+</div>
+
+---
+
 ## Overview
 
 CSFloat recently updated their search interface with a popup overlay that many users find disruptive. **Classic Float Search** brings back the familiar sidebar search experience you're used to, complete with the beautiful autocomplete dropdown that shows item suggestions with images and details.
