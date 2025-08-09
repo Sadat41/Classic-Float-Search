@@ -30,7 +30,7 @@
 
         
         sidebarInput.removeAttribute('disabled');
-        sidebarInput.style.border = '1px solid #ffA500';
+
 
         
         let inputTimeout;

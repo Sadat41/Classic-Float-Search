@@ -28,7 +28,6 @@ CSFloat recently updated their search interface with a popup overlay that many u
 - **Smooth Performance** - Optimized to prevent lag and stuttering
 - **Smart Suggestions** - Real CSFloat item database with images
 - **Keyboard Support** - Press Enter to search, click suggestions to select
-- **Visual Indicator** - Orange border shows the extension is active
 
 ### What Gets Hidden
 
