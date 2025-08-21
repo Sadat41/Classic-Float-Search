@@ -1,0 +1,42 @@
+/* Hide the main spotlight overlay component by moving it off-screen */
+app-spotlight-overlay {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    visibility: hidden !important;
+}
+
+/* Hide the backdrop for the search overlay */
+.cdk-overlay-backdrop:has(+ * app-spotlight-overlay) {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Styles for our custom dropdown container */
+#classic-search-dropdown-container {
+    position: absolute;
+    background-color: #2F323B;
+    border: 1px solid #43464E;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    overflow: hidden;
+    max-height: 400px;
+    overflow-y: auto;
+
+}
+
+/* Style the result rows inside our custom dropdown */
+#classic-search-dropdown-container .result-row {
+    cursor: pointer;
+    padding: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#classic-search-dropdown-container .result-row:hover,
+#classic-search-dropdown-container .result-row.result-row-selected {
+    background-color: #3A3D46;
+}
