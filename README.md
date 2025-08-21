@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/Sadat41/Classic-Float-Search/blob/main/icon128.png?raw=true" alt="Classic Float Search Logo" width="128" height="128">
+<img src="https://github.com/Sadat41/Classic-Float-Search/blob/main/icons/icon128.png?raw=true" alt="Classic Float Search Logo" width="128" height="128">
 
 # Classic Float Search
 
@@ -59,6 +59,23 @@ CSFloat recently updated their search interface with a popup overlay that many u
 ---
 
 ## Installation
+
+<div align="center">
+
+### Download for Your Browser
+
+<a href="https://github.com/Sadat41/Classic-Float-Search/tree/main/chrome">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/chrome/chrome-original.svg" alt="Chrome" width="60" height="60" style="margin: 0 20px;">
+</a>
+<a href="https://github.com/Sadat41/Classic-Float-Search/tree/main/firefox">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firefox/firefox-original.svg" alt="Firefox" width="60" height="60" style="margin: 0 20px;">
+</a>
+
+*Click the browser logo above to access the extension files*
+
+</div>
+
+---
 
 ### Chrome Installation
 
