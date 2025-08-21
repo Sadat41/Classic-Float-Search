@@ -7,7 +7,7 @@
 **Restore the classic CSFloat search experience with sidebar input and native autocomplete suggestions**
 
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/Sadat41/Classic-Float-Search/releases)
-[![Firefox Extension](https://img.shields.io/badge/Firefox_Browser-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://github.com/Sadat41/Classic-Float-Search/releases)
+[![Firefox Extension](https://img.shields.io/badge/Firefox_Browser-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://raw.githubusercontent.com/Sadat41/Classic-Float-Search/main/csfloat%20extension-firefox.zip)
 [![Version](https://img.shields.io/badge/Version-1.1.0-brightgreen?style=for-the-badge)](https://github.com/Sadat41/Classic-Float-Search/releases)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 [![CSFloat](https://img.shields.io/badge/CSFloat-Compatible-orange?style=for-the-badge)](https://csfloat.com)
@@ -62,21 +62,19 @@ CSFloat recently updated their search interface with a popup overlay that many u
 
 ### Chrome Installation
 
-1. **Download** the [Chrome version](https://github.com/Sadat41/Classic-Float-Search/releases) (`classic-float-search-chrome.zip`)
-2. **Extract** the ZIP file to a folder on your desktop
-3. **Open Chrome** and go to `chrome://extensions/`
-4. **Enable** "Developer mode" (toggle in top right)
-5. **Click** "Load unpacked" and select the extracted folder
-6. **Done!** Visit [csfloat.com/search](https://csfloat.com/search) to use
+1. **Download** the repository and navigate to the `chrome/` folder
+2. **Open Chrome** and go to `chrome://extensions/`
+3. **Enable** "Developer mode" (toggle in top right)
+4. **Click** "Load unpacked" and select the `chrome/` folder
+5. **Done!** Visit [csfloat.com/search](https://csfloat.com/search) to use
 
 ### Firefox Installation
 
-1. **Download** the [Firefox version](https://github.com/Sadat41/Classic-Float-Search/releases) (`classic-float-search-firefox.zip`)
-2. **Extract** the ZIP file to a folder on your desktop
-3. **Open Firefox** and go to `about:debugging`
-4. **Click** "This Firefox" in the sidebar
-5. **Click** "Load Temporary Add-on" and select `manifest.json` from the extracted folder
-6. **Done!** Visit [csfloat.com/search](https://csfloat.com/search) to use
+1. **Download** the repository and navigate to the `firefox/` folder
+2. **Open Firefox** and go to `about:debugging`
+3. **Click** "This Firefox" in the sidebar
+4. **Click** "Load Temporary Add-on" and select `manifest.json` from the `firefox/` folder
+5. **Done!** Visit [csfloat.com/search](https://csfloat.com/search) to use
 
 ### Alternative: Quick Install (Development)
 
@@ -215,10 +213,18 @@ The dropdown displays rich information:
 ### Files Structure
 ```
 Classic-Float-Search/
-├── manifest.json      # Extension configuration
-├── content.js         # Main functionality script  
-├── styles.css         # Interface optimization
-├── icon*.png          # Extension icons
+├── chrome/            # Chrome extension (Manifest v3)
+│   ├── manifest.json
+│   ├── content.js
+│   ├── styles.css
+│   └── icon*.png
+├── firefox/           # Firefox extension (Manifest v2)
+│   ├── manifest.json
+│   ├── content.js
+│   ├── styles.css
+│   └── icon*.png
+├── icons/             # Shared icon assets
+├── previews/          # Screenshots and demos
 └── README.md          # Documentation
 ```
 
