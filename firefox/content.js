@@ -225,9 +225,7 @@
     }
     
     function isSearchPage() {
-        const path = window.location.pathname;
-        // Only activate on /search pages, exclude /db for now (future support planned)
-        return path.startsWith('/search') && !path.startsWith('/db');
+        return window.location.pathname.startsWith('/search');
     }
     
     function handleNavigation() {
