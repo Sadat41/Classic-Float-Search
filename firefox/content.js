@@ -4,8 +4,6 @@
     let processedInputs = new WeakMap();
     let masterObserverDebounceTimeout;
     let currentUrl = window.location.href;
-
-    // A flag to track if the next input should trigger a search reset.
     let isNewSearchSequence = true;
 
     function getDropdownContainer() {
@@ -37,13 +35,9 @@
         const customDropdown = getDropdownContainer();
 
         if (!spotlightOverlay || !popupInput) {
-            console.log('CSFloat Classic Search: Missing spotlight overlay or popup input, retrying...');
-            // Longer delay for navigation scenarios
             setTimeout(() => initializeClassicSearch(sidebarInput), 1000);
             return;
         }
-
-        console.log('CSFloat Classic Search: Initializing for new search input.');
 
         const cloneToOriginalMap = new Map();
         let inputTimeout;
@@ -55,51 +49,36 @@
             }
             
             observer = new MutationObserver(() => {
-                console.log('CSFloat Classic Search: Mutation observer triggered');
                 const resultsWrapper = spotlightOverlay.querySelector('.results-wrapper');
                 customDropdown.innerHTML = '';
                 cloneToOriginalMap.clear();
 
                 if (resultsWrapper && resultsWrapper.hasChildNodes()) {
                     const resultRows = resultsWrapper.querySelectorAll('.result-row');
-                    console.log('CSFloat Classic Search: Found', resultRows.length, 'results');
                     resultRows.forEach(originalResult => {
                         const clonedResult = originalResult.cloneNode(true);
                         customDropdown.appendChild(clonedResult);
                         cloneToOriginalMap.set(clonedResult, originalResult);
                     });
-                    console.log('CSFloat Classic Search: Showing dropdown');
                     positionAndShowDropdown();
                 } else {
-                    console.log('CSFloat Classic Search: No results found, hiding dropdown');
                     customDropdown.style.display = 'none';
                 }
             });
 
             observer.observe(spotlightOverlay, { childList: true, subtree: true });
-            console.log('CSFloat Classic Search: Observer created and attached');
         }
 
         sidebarInput.addEventListener('input', () => {
-            console.log('CSFloat Classic Search: Input event triggered, value:', sidebarInput.value);
-            console.log('CSFloat Classic Search: isNewSearchSequence:', isNewSearchSequence);
-            
             if (isNewSearchSequence) {
-                console.log('CSFloat Classic Search: New search sequence detected, clearing old chip.');
                 const chipDeleteButton = document.querySelector('app-spotlight-chip .delete .btn');
-                
                 if (chipDeleteButton) {
                     performRealisticClick(chipDeleteButton);
-                    console.log('CSFloat Classic Search: Clicked chip delete button');
                 }
                 
-                // observer for new search sequence
-                console.log('CSFloat Classic Search: Recreating observer for new sequence');
                 createObserver();
                 
-
                 setTimeout(() => {
-                    console.log('CSFloat Classic Search: Force re-activating search overlay');
                     performRealisticClick(popupInput);
                     popupInput.focus();
                 }, 50);
@@ -109,31 +88,20 @@
             
             clearTimeout(inputTimeout);
             inputTimeout = setTimeout(() => {
-                console.log('CSFloat Classic Search: Setting popup input value and triggering search');
-                // Ensure the spotlight overlay is properly activated before setting value
                 if (!spotlightOverlay.style.visibility || spotlightOverlay.style.visibility === 'hidden') {
-                    console.log('CSFloat Classic Search: Re-activating spotlight overlay');
                     performRealisticClick(popupInput);
                 }
                 popupInput.value = sidebarInput.value;
                 popupInput.dispatchEvent(new Event('input', { bubbles: true }));
-                popupInput.focus(); 
-                console.log('CSFloat Classic Search: Popup input updated with value:', popupInput.value);
+                popupInput.focus();
             }, 150);
         });
 
         sidebarInput.addEventListener('focus', () => {
-            console.log('CSFloat Classic Search: Focus event triggered, isNewSearchSequence:', isNewSearchSequence);
-            
             if (isNewSearchSequence) {
-                console.log('CSFloat Classic Search: Complete reinitialization needed');
-                
-                
                 processedInputs.delete(sidebarInput);
                 
-                // Completely reinitialize after a delay  
                 setTimeout(() => {
-                    console.log('CSFloat Classic Search: Reinitializing extension');
                     initializeClassicSearch(sidebarInput);
                 }, 500);
                 
@@ -181,14 +149,10 @@
             }
         });
 
-        // This listener now resets the search sequence when user click away.
         document.addEventListener('click', (e) => {
             if (!sidebarInput.contains(e.target) && !customDropdown.contains(e.target) && !popupInput.contains(e.target)) {
-                console.log('CSFloat Classic Search: Clicked away from search, hiding dropdown');
-                // Only reset the flag if the dropdown was actually visible before this click.
                 if (customDropdown.offsetParent !== null && !isNewSearchSequence) {
                     isNewSearchSequence = true;
-                    console.log('CSFloat Classic Search: Set isNewSearchSequence to true');
                 }
                 customDropdown.style.display = 'none';
                 popupInput.blur();
@@ -233,47 +197,31 @@
     
     function handleNavigation() {
         if (currentUrl !== window.location.href) {
-            console.log('CSFloat Classic Search: URL changed from', currentUrl, 'to', window.location.href);
             currentUrl = window.location.href;
             
-            // If we navigate to a /db page, completely stop the extension
             if (isDbPage()) {
-                console.log('CSFloat Classic Search: Navigated to /db page, extension will not interfere');
-                return; // Stop all processing for /db pages
+                return;
             }
             
-            // Only reinitialize if we're on a search page
             if (isSearchPage()) {
-                console.log('CSFloat Classic Search: Now on search page, initializing extension');
-                // Reset state for new page
                 isNewSearchSequence = true;
                 processedInputs = new WeakMap();
                 
-                // Reinitialize after navigation with longer delay
                 setTimeout(() => {
-                    console.log('CSFloat Classic Search: Reinitializing after navigation');
                     main();
                 }, 500);
-            } else {
-                console.log('CSFloat Classic Search: Not on search page, extension inactive');
             }
         }
     }
     
     function main() {
-        // Never run on /db pages, even if navigated to from another page
         if (isDbPage()) {
-            console.log('CSFloat Classic Search: On /db page, extension completely inactive');
             return;
         }
         
-        // Only run extension functionality on search pages
         if (!isSearchPage()) {
-            console.log('CSFloat Classic Search: Not on search page, skipping initialization');
             return;
         }
-        
-        console.log('CSFloat Classic Search: On search page, initializing extension');
         
         // Initial setup
         forceEnableInputs();
@@ -295,15 +243,11 @@
         });
     }
 
-    // Always start navigation monitoring regardless of page
     function startNavigationMonitoring() {
-        // Don't start navigation monitoring on /db pages
         if (isDbPage()) {
-            console.log('CSFloat Classic Search: On /db page, no navigation monitoring needed');
             return;
         }
         
-        // Monitor for SPA navigation changes
         const navigationObserver = new MutationObserver(() => {
             handleNavigation();
         });
@@ -316,13 +260,8 @@
             });
         }
         
-        // Also listen for popstate events
         window.addEventListener('popstate', handleNavigation);
-        
-        // Fallback: periodic URL checking for SPA navigation
         setInterval(handleNavigation, 1000);
-        
-        console.log('CSFloat Classic Search: Navigation monitoring started on', window.location.href);
     }
 
     if (document.readyState === 'loading') {
