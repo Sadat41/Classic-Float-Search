@@ -9,7 +9,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://csfloat.com/search*"
+        "https://csfloat.com/*"
       ],
       "js": ["content.js"],
       "css": ["styles.css"],
