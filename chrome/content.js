@@ -227,10 +227,20 @@
         return window.location.pathname.startsWith('/search');
     }
     
+    function isDbPage() {
+        return window.location.pathname.startsWith('/db');
+    }
+    
     function handleNavigation() {
         if (currentUrl !== window.location.href) {
             console.log('CSFloat Classic Search: URL changed from', currentUrl, 'to', window.location.href);
             currentUrl = window.location.href;
+            
+            // If we navigate to a /db page, completely stop the extension
+            if (isDbPage()) {
+                console.log('CSFloat Classic Search: Navigated to /db page, extension will not interfere');
+                return; // Stop all processing for /db pages
+            }
             
             // Only reinitialize if we're on a search page
             if (isSearchPage()) {
@@ -251,6 +261,12 @@
     }
     
     function main() {
+        // Never run on /db pages, even if navigated to from another page
+        if (isDbPage()) {
+            console.log('CSFloat Classic Search: On /db page, extension completely inactive');
+            return;
+        }
+        
         // Only run extension functionality on search pages
         if (!isSearchPage()) {
             console.log('CSFloat Classic Search: Not on search page, skipping initialization');
@@ -281,6 +297,12 @@
 
     // Always start navigation monitoring regardless of page
     function startNavigationMonitoring() {
+        // Don't start navigation monitoring on /db pages
+        if (isDbPage()) {
+            console.log('CSFloat Classic Search: On /db page, no navigation monitoring needed');
+            return;
+        }
+        
         // Monitor for SPA navigation changes
         const navigationObserver = new MutationObserver(() => {
             handleNavigation();
