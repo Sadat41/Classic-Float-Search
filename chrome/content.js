@@ -47,6 +47,38 @@
 
         const cloneToOriginalMap = new Map();
         let inputTimeout;
+        let observer;
+        
+        function createObserver() {
+            if (observer) {
+                observer.disconnect();
+            }
+            
+            observer = new MutationObserver(() => {
+                console.log('CSFloat Classic Search: Mutation observer triggered');
+                const resultsWrapper = spotlightOverlay.querySelector('.results-wrapper');
+                customDropdown.innerHTML = '';
+                cloneToOriginalMap.clear();
+
+                if (resultsWrapper && resultsWrapper.hasChildNodes()) {
+                    const resultRows = resultsWrapper.querySelectorAll('.result-row');
+                    console.log('CSFloat Classic Search: Found', resultRows.length, 'results');
+                    resultRows.forEach(originalResult => {
+                        const clonedResult = originalResult.cloneNode(true);
+                        customDropdown.appendChild(clonedResult);
+                        cloneToOriginalMap.set(clonedResult, originalResult);
+                    });
+                    console.log('CSFloat Classic Search: Showing dropdown');
+                    positionAndShowDropdown();
+                } else {
+                    console.log('CSFloat Classic Search: No results found, hiding dropdown');
+                    customDropdown.style.display = 'none';
+                }
+            });
+
+            observer.observe(spotlightOverlay, { childList: true, subtree: true });
+            console.log('CSFloat Classic Search: Observer created and attached');
+        }
 
         sidebarInput.addEventListener('input', () => {
             console.log('CSFloat Classic Search: Input event triggered, value:', sidebarInput.value);
@@ -162,39 +194,6 @@
                 popupInput.blur();
             }
         });
-
-        let observer;
-        
-        function createObserver() {
-            if (observer) {
-                observer.disconnect();
-            }
-            
-            observer = new MutationObserver(() => {
-                console.log('CSFloat Classic Search: Mutation observer triggered');
-                const resultsWrapper = spotlightOverlay.querySelector('.results-wrapper');
-                customDropdown.innerHTML = '';
-                cloneToOriginalMap.clear();
-
-                if (resultsWrapper && resultsWrapper.hasChildNodes()) {
-                    const resultRows = resultsWrapper.querySelectorAll('.result-row');
-                    console.log('CSFloat Classic Search: Found', resultRows.length, 'results');
-                    resultRows.forEach(originalResult => {
-                        const clonedResult = originalResult.cloneNode(true);
-                        customDropdown.appendChild(clonedResult);
-                        cloneToOriginalMap.set(clonedResult, originalResult);
-                    });
-                    console.log('CSFloat Classic Search: Showing dropdown');
-                    positionAndShowDropdown();
-                } else {
-                    console.log('CSFloat Classic Search: No results found, hiding dropdown');
-                    customDropdown.style.display = 'none';
-                }
-            });
-
-            observer.observe(spotlightOverlay, { childList: true, subtree: true });
-            console.log('CSFloat Classic Search: Observer created and attached');
-        }
         
         createObserver();
 
