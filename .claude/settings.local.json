@@ -1,5 +1,9 @@
 {
   "permissions": {
+    "allow": [
+      "Read(c:\\Users\\Sadat\\OneDrive\\Desktop\\proj\\csfloat extension\\firefox/**)",
+      "Bash(git add:*)"
+    ],
     "defaultMode": "acceptEdits"
   }
 }
