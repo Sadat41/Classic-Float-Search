@@ -136,6 +136,9 @@
                     customDropdown.style.left = `${rect.left + window.scrollX}px`;
                     customDropdown.style.width = `${rect.width}px`;
                     customDropdown.style.display = 'block';
+
+                    // Force layout recalculation for text wrapping to take effect
+                    void customDropdown.offsetHeight;
                 } else {
                     customDropdown.style.display = 'none';
                 }

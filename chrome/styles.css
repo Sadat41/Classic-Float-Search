@@ -29,11 +29,22 @@ app-spotlight-overlay {
 /* Style the result rows inside our custom dropdown */
 #classic-search-dropdown-container .result-row {
     cursor: pointer;
-    padding: 4px;
+    padding: 4px 6px;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    overflow: visible !important;
+    line-height: 1.4;
+}
+
+/* Override text truncation on all child elements */
+#classic-search-dropdown-container .result-row * {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
 }
 
 #classic-search-dropdown-container .result-row:hover,
